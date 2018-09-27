@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <style>#map_52f44f15665a4583b79a3ae4e2a9be39 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_52f44f15665a4583b79a3ae4e2a9be39" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_52f44f15665a4583b79a3ae4e2a9be39 = L.map(
+        'map_52f44f15665a4583b79a3ae4e2a9be39', {
+        center: [40.7144845375, -73.7756327319],
+        zoom: 10,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+    
+    
+    var tile_layer_64d35a401b4a4f16ad71d7f9098a25b1 = L.tileLayer(
+        'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "subdomains": "abc"
+}).addTo(map_52f44f15665a4583b79a3ae4e2a9be39);
+    
+            var feature_group_2081989a65e1439c93656f73c2424665 = L.featureGroup(
+                ).addTo(map_52f44f15665a4583b79a3ae4e2a9be39);
+        
+    
+            var circle_marker_2232a20dbed54313a1b81450134a06d2 = L.circleMarker(
+                [40.64530975, -73.9550230275334],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_2081989a65e1439c93656f73c2424665);
+            
+    
+        circle_marker_2232a20dbed54313a1b81450134a06d2.bindTooltip(
+            '<div>'
+            + 'Nominatim, Kings county: [40.64530975, -73.9550230275334]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_173ad1ac8f05495e8cba141c61e7aae9 = L.featureGroup(
+                ).addTo(map_52f44f15665a4583b79a3ae4e2a9be39);
+        
+    
+            var circle_marker_bce4f9b299054ddca4482bdb600f6b4a = L.circleMarker(
+                [40.6781784, -73.9441579],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "green",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_173ad1ac8f05495e8cba141c61e7aae9);
+            
+    
+        circle_marker_bce4f9b299054ddca4482bdb600f6b4a.bindTooltip(
+            '<div>'
+            + 'GoogleV3, Kings county: [40.6781784, -73.9441579]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_7875cc45a23844b993c3b39be8ab0457 = L.featureGroup(
+                ).addTo(map_52f44f15665a4583b79a3ae4e2a9be39);
+        
+    
+            var circle_marker_44461b2f3d924faf8874a25459ef1bd4 = L.circleMarker(
+                [40.650100000000066, -73.94957999999997],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "blue",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_7875cc45a23844b993c3b39be8ab0457);
+            
+    
+        circle_marker_44461b2f3d924faf8874a25459ef1bd4.bindTooltip(
+            '<div>'
+            + 'ArcGis, Kings county: [40.650100000000066, -73.94957999999997]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_018533b9850c4452bd800af31cdcb2c0 = L.featureGroup(
+                ).addTo(map_52f44f15665a4583b79a3ae4e2a9be39);
+        
+    
+            var circle_marker_a35ca4c97dc141f6b25f2455f12ed0ae = L.circleMarker(
+                [40.88435, -73.25377],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "cyan",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_018533b9850c4452bd800af31cdcb2c0);
+            
+    
+        circle_marker_a35ca4c97dc141f6b25f2455f12ed0ae.bindTooltip(
+            '<div>'
+            + 'AzureMaps, Kings county: [40.88435, -73.25377]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var layer_control_8f8cbdc6c0d548419653a25798587fda = {
+                base_layers : { "stamentoner" : tile_layer_64d35a401b4a4f16ad71d7f9098a25b1, },
+                overlays : { "<span style=\"color:red;\">Nominatim</span>" : feature_group_2081989a65e1439c93656f73c2424665,"<span style=\"color:green;\">GoogleV3</span>" : feature_group_173ad1ac8f05495e8cba141c61e7aae9,"<span style=\"color:blue;\">ArcGis</span>" : feature_group_7875cc45a23844b993c3b39be8ab0457,"<span style=\"color:cyan;\">AzureMaps</span>" : feature_group_018533b9850c4452bd800af31cdcb2c0, }
+                };
+            L.control.layers(
+                layer_control_8f8cbdc6c0d548419653a25798587fda.base_layers,
+                layer_control_8f8cbdc6c0d548419653a25798587fda.overlays,
+                {position: 'topright',
+                 collapsed: false,
+                 autoZIndex: true
+                }).addTo(map_52f44f15665a4583b79a3ae4e2a9be39);
+            
+        
+</script>
