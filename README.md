@@ -20,8 +20,17 @@ ArcGis usually returns the largest bounding boxes, and AzureMaps has - literally
 # Note: 
 #### It seems that the errors from AzureMaps are due to the wrong parsing of the query string...
 
-Meaning that with this service, portions of the query may have to be assigned to specific parameters. This may explain why the coordinates for the query string "Richmond county, New York, NY, USA", which asks for the geolocation of Staten Island, one of the boroughs of New York City, returns the coordinates for "Richmond Hill", a Queens neighborhood. Thus AzureMaps ignores portions of the string.
-**See**: ./GeocodersComparison/geodata/html/Richmond_county_box.html
+Meaning that with this service, portions of the query may have to be assigned to specific parameters. 
+This may explain why the coordinates for the query string "Richmond county, New York, NY, USA", which asks for the geolocation of Staten Island, 
+one of the boroughs of New York City, returns the coordinates for "Richmond Hill", a Queens neighborhood. Thus AzureMaps ignores portions of the string.
+
+
+# View all the maps with nbviewer:
+![Viewer](https://nbviewer.jupyter.org/github/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/notebooks/Geocoder_Comparison.ipynb)
+
+
+### Location of rendered maps:  ./GeocodersComparison/geodata/html/
+
 
 # Note: '.env' file is needed #
  
