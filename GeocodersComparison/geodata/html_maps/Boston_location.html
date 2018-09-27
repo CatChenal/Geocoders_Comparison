@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <style>#map_91c489241b37415e817ec35705ffe326 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_91c489241b37415e817ec35705ffe326" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_91c489241b37415e817ec35705ffe326 = L.map(
+        'map_91c489241b37415e817ec35705ffe326', {
+        center: [42.359496475, -71.058135325],
+        zoom: 14,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+    
+    
+    var tile_layer_0278c7acfab346feb5e4394f20ae2654 = L.tileLayer(
+        'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "subdomains": "abc"
+}).addTo(map_91c489241b37415e817ec35705ffe326);
+    
+            var feature_group_4d78f959e8274444827e9487ae2a9f04 = L.featureGroup(
+                ).addTo(map_91c489241b37415e817ec35705ffe326);
+        
+    
+            var circle_marker_ae325aa2f3e241518f3c8d27b871c382 = L.circleMarker(
+                [42.3602534, -71.0582912],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_4d78f959e8274444827e9487ae2a9f04);
+            
+    
+        circle_marker_ae325aa2f3e241518f3c8d27b871c382.bindTooltip(
+            '<div>'
+            + 'Nominatim, Boston: [42.3602534, -71.0582912]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_8415205ec7ee478eabde2fe8ef02006c = L.featureGroup(
+                ).addTo(map_91c489241b37415e817ec35705ffe326);
+        
+    
+            var circle_marker_ddc555619bf34b158bbadd539bc62ab4 = L.circleMarker(
+                [42.3600825, -71.0588801],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "green",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_8415205ec7ee478eabde2fe8ef02006c);
+            
+    
+        circle_marker_ddc555619bf34b158bbadd539bc62ab4.bindTooltip(
+            '<div>'
+            + 'GoogleV3, Boston: [42.3600825, -71.0588801]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_58720e484f114ceb88918e29093859f6 = L.featureGroup(
+                ).addTo(map_91c489241b37415e817ec35705ffe326);
+        
+    
+            var circle_marker_8c0aee329db74ab9ba106177c8fe421f = L.circleMarker(
+                [42.35866000000004, -71.05673999999993],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "blue",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_58720e484f114ceb88918e29093859f6);
+            
+    
+        circle_marker_8c0aee329db74ab9ba106177c8fe421f.bindTooltip(
+            '<div>'
+            + 'ArcGis, Boston: [42.35866000000004, -71.05673999999993]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_6ea0c71e422a4bfe9f70ffcca203b4fa = L.featureGroup(
+                ).addTo(map_91c489241b37415e817ec35705ffe326);
+        
+    
+            var circle_marker_6c7b6ea4e9624c898a1eea3428c7a681 = L.circleMarker(
+                [42.35899, -71.05863],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "cyan",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_6ea0c71e422a4bfe9f70ffcca203b4fa);
+            
+    
+        circle_marker_6c7b6ea4e9624c898a1eea3428c7a681.bindTooltip(
+            '<div>'
+            + 'AzureMaps, Boston: [42.35899, -71.05863]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var layer_control_7eb871e6cdb54f28bcd364aedab9241c = {
+                base_layers : { "stamentoner" : tile_layer_0278c7acfab346feb5e4394f20ae2654, },
+                overlays : { "<span style=\"color:red;\">Nominatim</span>" : feature_group_4d78f959e8274444827e9487ae2a9f04,"<span style=\"color:green;\">GoogleV3</span>" : feature_group_8415205ec7ee478eabde2fe8ef02006c,"<span style=\"color:blue;\">ArcGis</span>" : feature_group_58720e484f114ceb88918e29093859f6,"<span style=\"color:cyan;\">AzureMaps</span>" : feature_group_6ea0c71e422a4bfe9f70ffcca203b4fa, }
+                };
+            L.control.layers(
+                layer_control_7eb871e6cdb54f28bcd364aedab9241c.base_layers,
+                layer_control_7eb871e6cdb54f28bcd364aedab9241c.overlays,
+                {position: 'topright',
+                 collapsed: false,
+                 autoZIndex: true
+                }).addTo(map_91c489241b37415e817ec35705ffe326);
+            
+        
+</script>

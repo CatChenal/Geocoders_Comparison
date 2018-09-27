@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <style>#map_46602d22f30545639983fe00434ba7ce {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_46602d22f30545639983fe00434ba7ce" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_46602d22f30545639983fe00434ba7ce = L.map(
+        'map_46602d22f30545639983fe00434ba7ce', {
+        center: [40.7848975258, -73.9637882609],
+        zoom: 14,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+    
+    
+    var tile_layer_f73716279b5b43bf802df37879510d43 = L.tileLayer(
+        'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "subdomains": "abc"
+}).addTo(map_46602d22f30545639983fe00434ba7ce);
+    
+            var feature_group_8b36bb6f5fab43f684e9c05d6debf37d = L.featureGroup(
+                ).addTo(map_46602d22f30545639983fe00434ba7ce);
+        
+    
+            var circle_marker_12fc079a4e0846d0b53b87daa97f4cac = L.circleMarker(
+                [40.77963585, -73.96539645],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_8b36bb6f5fab43f684e9c05d6debf37d);
+            
+    
+        circle_marker_12fc079a4e0846d0b53b87daa97f4cac.bindTooltip(
+            '<div>'
+            + 'Nominatim, Cleopatra\'s needle: [40.77963585, -73.96539645]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_d30b8bfb4bc341c3925dbf88a5085b41 = L.featureGroup(
+                ).addTo(map_46602d22f30545639983fe00434ba7ce);
+        
+    
+            var circle_marker_74df2e8ac2494503890754eb70cbd371 = L.circleMarker(
+                [40.7796358, -73.9653964],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "green",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_d30b8bfb4bc341c3925dbf88a5085b41);
+            
+    
+        circle_marker_74df2e8ac2494503890754eb70cbd371.bindTooltip(
+            '<div>'
+            + 'GoogleV3, Cleopatra\'s needle: [40.7796358, -73.9653964]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_62a9cebfebae47e8b6bb77aa0163a9fa = L.featureGroup(
+                ).addTo(map_46602d22f30545639983fe00434ba7ce);
+        
+    
+            var circle_marker_a6bbdd23d1b649f585e9dd3738e02cbd = L.circleMarker(
+                [40.7964784531607, -73.95881019345023],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "blue",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_62a9cebfebae47e8b6bb77aa0163a9fa);
+            
+    
+        circle_marker_a6bbdd23d1b649f585e9dd3738e02cbd.bindTooltip(
+            '<div>'
+            + 'ArcGis, Cleopatra\'s needle: [40.7964784531607, -73.95881019345023]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_5ced06802476486686a3a0f41e1d300b = L.featureGroup(
+                ).addTo(map_46602d22f30545639983fe00434ba7ce);
+        
+    
+            var circle_marker_74b2d9d8155a4145977f3e7fb9e2effa = L.circleMarker(
+                [40.78384, -73.96555],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "cyan",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_5ced06802476486686a3a0f41e1d300b);
+            
+    
+        circle_marker_74b2d9d8155a4145977f3e7fb9e2effa.bindTooltip(
+            '<div>'
+            + 'AzureMaps, Cleopatra\'s needle: [40.78384, -73.96555]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var layer_control_349229d432d4454d968fab3e885e45ec = {
+                base_layers : { "stamentoner" : tile_layer_f73716279b5b43bf802df37879510d43, },
+                overlays : { "<span style=\"color:red;\">Nominatim</span>" : feature_group_8b36bb6f5fab43f684e9c05d6debf37d,"<span style=\"color:green;\">GoogleV3</span>" : feature_group_d30b8bfb4bc341c3925dbf88a5085b41,"<span style=\"color:blue;\">ArcGis</span>" : feature_group_62a9cebfebae47e8b6bb77aa0163a9fa,"<span style=\"color:cyan;\">AzureMaps</span>" : feature_group_5ced06802476486686a3a0f41e1d300b, }
+                };
+            L.control.layers(
+                layer_control_349229d432d4454d968fab3e885e45ec.base_layers,
+                layer_control_349229d432d4454d968fab3e885e45ec.overlays,
+                {position: 'topright',
+                 collapsed: false,
+                 autoZIndex: true
+                }).addTo(map_46602d22f30545639983fe00434ba7ce);
+            
+        
+</script>

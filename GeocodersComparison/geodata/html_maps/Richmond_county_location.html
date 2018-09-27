@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <style>#map_9c93020edcfa4d9f9bc5c4416c46dfb2 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_9c93020edcfa4d9f9bc5c4416c46dfb2" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_9c93020edcfa4d9f9bc5c4416c46dfb2 = L.map(
+        'map_9c93020edcfa4d9f9bc5c4416c46dfb2', {
+        center: [40.6060526588, -74.0663456345],
+        zoom: 11,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+    
+    
+    var tile_layer_1a49e064ed1f4d1d8c8dec004fc48761 = L.tileLayer(
+        'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "subdomains": "abc"
+}).addTo(map_9c93020edcfa4d9f9bc5c4416c46dfb2);
+    
+            var feature_group_c31c28e96e604e26baa6c69c58536420 = L.featureGroup(
+                ).addTo(map_9c93020edcfa4d9f9bc5c4416c46dfb2);
+        
+    
+            var circle_marker_5b0d8918d149489f852b180be98cfd75 = L.circleMarker(
+                [40.564209, -74.1253046199539],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_c31c28e96e604e26baa6c69c58536420);
+            
+    
+        circle_marker_5b0d8918d149489f852b180be98cfd75.bindTooltip(
+            '<div>'
+            + 'Nominatim, Richmond county: [40.564209, -74.1253046199539]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_7efc566cc7d14d9f846bd5d98f54c016 = L.featureGroup(
+                ).addTo(map_9c93020edcfa4d9f9bc5c4416c46dfb2);
+        
+    
+            var circle_marker_f8cbecaca8134015a43ef1327618581a = L.circleMarker(
+                [40.5795317, -74.1502007],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "green",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_7efc566cc7d14d9f846bd5d98f54c016);
+            
+    
+        circle_marker_f8cbecaca8134015a43ef1327618581a.bindTooltip(
+            '<div>'
+            + 'GoogleV3, Richmond county: [40.5795317, -74.1502007]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_bd1d4376ad3f435e87a00baba7968c74 = L.featureGroup(
+                ).addTo(map_9c93020edcfa4d9f9bc5c4416c46dfb2);
+        
+    
+            var circle_marker_bf1077aa668a4d24853432a25d0cad23 = L.circleMarker(
+                [40.580769935000035, -74.15532721799997],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "blue",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_bd1d4376ad3f435e87a00baba7968c74);
+            
+    
+        circle_marker_bf1077aa668a4d24853432a25d0cad23.bindTooltip(
+            '<div>'
+            + 'ArcGis, Richmond county: [40.580769935000035, -74.15532721799997]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_3f8b54bfe64b4bd2b0a067aa632b92d1 = L.featureGroup(
+                ).addTo(map_9c93020edcfa4d9f9bc5c4416c46dfb2);
+        
+    
+            var circle_marker_d218f9c9a9164c41b6aab24916a79ca0 = L.circleMarker(
+                [40.6997, -73.83455],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "cyan",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_3f8b54bfe64b4bd2b0a067aa632b92d1);
+            
+    
+        circle_marker_d218f9c9a9164c41b6aab24916a79ca0.bindTooltip(
+            '<div>'
+            + 'AzureMaps, Richmond county: [40.6997, -73.83455]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var layer_control_d0dac8c080a749e285540fd365e9e2ec = {
+                base_layers : { "stamentoner" : tile_layer_1a49e064ed1f4d1d8c8dec004fc48761, },
+                overlays : { "<span style=\"color:red;\">Nominatim</span>" : feature_group_c31c28e96e604e26baa6c69c58536420,"<span style=\"color:green;\">GoogleV3</span>" : feature_group_7efc566cc7d14d9f846bd5d98f54c016,"<span style=\"color:blue;\">ArcGis</span>" : feature_group_bd1d4376ad3f435e87a00baba7968c74,"<span style=\"color:cyan;\">AzureMaps</span>" : feature_group_3f8b54bfe64b4bd2b0a067aa632b92d1, }
+                };
+            L.control.layers(
+                layer_control_d0dac8c080a749e285540fd365e9e2ec.base_layers,
+                layer_control_d0dac8c080a749e285540fd365e9e2ec.overlays,
+                {position: 'topright',
+                 collapsed: false,
+                 autoZIndex: true
+                }).addTo(map_9c93020edcfa4d9f9bc5c4416c46dfb2);
+            
+        
+</script>

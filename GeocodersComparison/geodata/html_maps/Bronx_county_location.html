@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <style>#map_93283c640fae4d94a050c4f6e75691ea {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_93283c640fae4d94a050c4f6e75691ea" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_93283c640fae4d94a050c4f6e75691ea = L.map(
+        'map_93283c640fae4d94a050c4f6e75691ea', {
+        center: [40.8428168375, -73.8729775895],
+        zoom: 13,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+    
+    
+    var tile_layer_16388019c9ce463fa7b70d49a5e574df = L.tileLayer(
+        'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "subdomains": "abc"
+}).addTo(map_93283c640fae4d94a050c4f6e75691ea);
+    
+            var feature_group_4a21e040c8e14fcfa172ce3d2a79c78f = L.featureGroup(
+                ).addTo(map_93283c640fae4d94a050c4f6e75691ea);
+        
+    
+            var circle_marker_36e05b38ed474325ae28941570be5fe8 = L.circleMarker(
+                [40.85048545, -73.8404035580209],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "red",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_4a21e040c8e14fcfa172ce3d2a79c78f);
+            
+    
+        circle_marker_36e05b38ed474325ae28941570be5fe8.bindTooltip(
+            '<div>'
+            + 'Nominatim, Bronx county: [40.85048545, -73.8404035580209]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_b64b342912774c68b488813f2cd143da = L.featureGroup(
+                ).addTo(map_93283c640fae4d94a050c4f6e75691ea);
+        
+    
+            var circle_marker_6b656c30e35c40ffb88b0b7fe7ceff13 = L.circleMarker(
+                [40.8447819, -73.8648268],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "green",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_b64b342912774c68b488813f2cd143da);
+            
+    
+        circle_marker_6b656c30e35c40ffb88b0b7fe7ceff13.bindTooltip(
+            '<div>'
+            + 'GoogleV3, Bronx county: [40.8447819, -73.8648268]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_1c1322779f8e460ebc34c0a5b916bcb2 = L.featureGroup(
+                ).addTo(map_93283c640fae4d94a050c4f6e75691ea);
+        
+    
+            var circle_marker_435c77dcca004711adda8daebd076cfa = L.circleMarker(
+                [40.84985000000006, -73.86640999999997],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "blue",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_1c1322779f8e460ebc34c0a5b916bcb2);
+            
+    
+        circle_marker_435c77dcca004711adda8daebd076cfa.bindTooltip(
+            '<div>'
+            + 'ArcGis, Bronx county: [40.84985000000006, -73.86640999999997]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var feature_group_fd974cff59ae4ce3bc35a8458e003951 = L.featureGroup(
+                ).addTo(map_93283c640fae4d94a050c4f6e75691ea);
+        
+    
+            var circle_marker_1d25b4558b734e3e8dd33063e6773fa4 = L.circleMarker(
+                [40.82615, -73.92027],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "cyan",
+  "fillOpacity": 0.3,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 10,
+  "stroke": true,
+  "weight": 1
+}
+                )
+                .addTo(feature_group_fd974cff59ae4ce3bc35a8458e003951);
+            
+    
+        circle_marker_1d25b4558b734e3e8dd33063e6773fa4.bindTooltip(
+            '<div>'
+            + 'AzureMaps, Bronx county: [40.82615, -73.92027]' + '</div>',
+            {"sticky": true}
+        );
+        
+    
+            var layer_control_ffb5f02c6ee34282a34fbf348eabb9ee = {
+                base_layers : { "stamentoner" : tile_layer_16388019c9ce463fa7b70d49a5e574df, },
+                overlays : { "<span style=\"color:red;\">Nominatim</span>" : feature_group_4a21e040c8e14fcfa172ce3d2a79c78f,"<span style=\"color:green;\">GoogleV3</span>" : feature_group_b64b342912774c68b488813f2cd143da,"<span style=\"color:blue;\">ArcGis</span>" : feature_group_1c1322779f8e460ebc34c0a5b916bcb2,"<span style=\"color:cyan;\">AzureMaps</span>" : feature_group_fd974cff59ae4ce3bc35a8458e003951, }
+                };
+            L.control.layers(
+                layer_control_ffb5f02c6ee34282a34fbf348eabb9ee.base_layers,
+                layer_control_ffb5f02c6ee34282a34fbf348eabb9ee.overlays,
+                {position: 'topright',
+                 collapsed: false,
+                 autoZIndex: true
+                }).addTo(map_93283c640fae4d94a050c4f6e75691ea);
+            
+        
+</script>
