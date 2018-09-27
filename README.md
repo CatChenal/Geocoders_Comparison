@@ -26,7 +26,7 @@ one of the boroughs of New York City, returns the coordinates for "Richmond Hill
 
 
 # View all the maps with nbviewer:
-![Viewer](https://nbviewer.jupyter.org/github/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/notebooks/Geocoder_Comparison.ipynb)
+[GeocoderComparison Viewer](https://nbviewer.jupyter.org/github/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/notebooks/Geocoder_Comparison.ipynb)
 
 
 ### Location of rendered maps:  ./GeocodersComparison/geodata/html/
