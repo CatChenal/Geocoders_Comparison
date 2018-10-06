@@ -1,5 +1,5 @@
-Four_Geocoders_Comparison
-=========================
+GeocodersComparison
+===================
 
 .. toctree::
    :maxdepth: 4

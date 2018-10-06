@@ -2,10 +2,14 @@
 """
 @author: Cat Chenal
 """
+__name__ = 'GeocodersComparison'
+
 import os
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import geopandas as gpd
 
 from collections import OrderedDict
 
@@ -18,15 +22,16 @@ from geopy.geocoders import ArcGIS
 # from geopy.geocoders import AzureMaps
 # no longer works; acessing the API w/requests
 
+import matplotlib as plt
+
 import folium
 from IPython.display import display
 
 import settings
 # =============================================================================
 
-
 def get_geo_file(geofile):
-    """Loads a previously stored geojson file if found.
+    """Loads a previously stored geo json file if found.
        Returns a dict.
     """
     from datetime import datetime
@@ -98,11 +103,12 @@ def get_geodata(geocoder_to_use, query_list, use_local=True):
         msg = msg.format(type(query_list))
         return TypeError(msg)
 
-    # to check /save local file:
+    # to check /save local file; base name w/o extension:
     out = 'geodata_' + geocoder_to_use[:3]
+    DIR_GEO = os.path.join(Path('.'), 'geodata')
 
     if use_local:
-        geodata = get_geo_file('./geodata/' + out + '.json')
+        geodata = get_geo_file(os.path.join(DIR_GEO,  out + '.json'))
         if isinstance(geodata, dict):
             return geodata
         else:
@@ -122,7 +128,7 @@ def get_geodata(geocoder_to_use, query_list, use_local=True):
             g = ArcGIS(username=None, password=None, referer=None,
                        user_agent='this_app', timeout=tout)
         else:
-            # original setup stopped working 9/12/19: unable to resolve the
+            # original setup stopped working 9/12/18: unable to resolve the
             # http 400 error; reverted to request/json.
             # g = AzureMaps(subscription_key=AZURE_KEY, timeout=tout,
             #              user_agent='ths_app', domain='atlas.microsoft.com')
@@ -158,6 +164,7 @@ def get_geodata(geocoder_to_use, query_list, use_local=True):
                     info_d['loc'] = [float(location[0].raw['lat']),
                                      float(location[0].raw['lon'])]
                     # bounding boxes as 2 corner pts: [NE], [SW]
+                    # Note: for locations West of GMT; adjustment needed otherwise
                     info_d['box'] = [[float(location[0].raw['boundingbox'][1]),
                                       float(location[0].raw['boundingbox'][3])],
                                      [float(location[0].raw['boundingbox'][0]),
@@ -190,7 +197,8 @@ def get_geodata(geocoder_to_use, query_list, use_local=True):
             geodata[place] = info_d
 
             # save file (overwrite=default)
-            save_file('./geodata/' + out, 'json', geodata)
+            outfile = os.path.join(DIR_GEO,  out)
+            save_file(outfile, 'json', geodata)
 
         return geodata
 
@@ -341,6 +349,9 @@ def compare_location_with_geobox(places, geocs, geo_dicts, show_values=False):
     To answer the question: "Are the point coordinates for a place identical to
     the center of its bounding box?" for all geocoders in the comparison.
     Note: the earth is plat here, no geodesic distance.
+    Return
+    ------
+    Pandas DataFrame
     """
     df_lst = []
 
@@ -377,7 +388,7 @@ def compare_location_with_geobox(places, geocs, geo_dicts, show_values=False):
     return df
 
 
-def get_map(geo, zoom=14, map_style='Stamen Toner'):
+def get_map(geo, zoom=14, map_style='cartodbpositron'):
     g = np.array(geo)
     mean_lat = g[..., 0].mean()
     mean_lon = g[..., 1].mean()
@@ -386,7 +397,7 @@ def get_map(geo, zoom=14, map_style='Stamen Toner'):
     return m
 
 
-def add_box_and_markers(mapobj, gdf, colors_d):
+def add_box_and_markers(mapobj, gdf, colors_d, lc_loc = 'topright'):
     """
     Add location markers and a feature group, which provides an "interactive
     legend",
@@ -421,15 +432,13 @@ def add_box_and_markers(mapobj, gdf, colors_d):
         p2 = [p3[0], p1[1]]  # SE
         p4 = [p1[0], p3[1]]  # NW
 
-        # 4 lines to a box:
-        folium.PolyLine(locations=[p1, p2], color=colors_d[i]).add_to(grp2)
-        folium.PolyLine(locations=[p2, p3], color=colors_d[i]).add_to(grp2)
-        folium.PolyLine(locations=[p3, p4], color=colors_d[i]).add_to(grp2)
-        folium.PolyLine(locations=[p4, p1], color=colors_d[i]).add_to(grp2)
+         # 4 lines to a box:
+        sides = [[p1, p2], [p2, p3], [p3, p4], [p4, p1]]
+        folium.PolyLine(sides, color=colors_d[i]).add_to(grp2)
 
         grp2.add_to(mapobj)
 
-    folium.map.LayerControl('topright', collapsed=False).add_to(mapobj)
+    folium.map.LayerControl(lc_loc, collapsed=False).add_to(mapobj)
 
     return mapobj
 
@@ -450,7 +459,7 @@ def add_markers(mapobj, gdf, colors_d):
         tip = "{}, {}: {}".format(i, place, row['lat, lon'])
 
         folium.CircleMarker([row['lat, lon'][0], row['lat, lon'][1]],
-                            radius=10,
+                            radius=7,
                             color='blue',
                             weight=1,
                             fill=True,
@@ -480,10 +489,8 @@ def add_boxes(mapobj, gdf, colors_d):
         grp = folium.FeatureGroup(grp_name)
 
         # 4 lines to a box:
-        folium.PolyLine(locations=[p1, p2], color=colors_d[i]).add_to(grp)
-        folium.PolyLine(locations=[p2, p3], color=colors_d[i]).add_to(grp)
-        folium.PolyLine(locations=[p3, p4], color=colors_d[i]).add_to(grp)
-        folium.PolyLine(locations=[p4, p1], color=colors_d[i]).add_to(grp)
+        sides = [[p1, p2], [p2, p3], [p3, p4], [p4, p1]]
+        folium.PolyLine(sides, color=colors_d[i]).add_to(grp)
 
         grp.add_to(mapobj)
 
@@ -518,7 +525,7 @@ def map_geos(df, colors_dict, geo_type='location', zoom=14, **kwargs):
     if not (df.index.name is None):
         name = df.index.name.replace(' ', '_')
     name += '_' + geo_type + '.html'
-    map_x.save('./html/' + name)
+    map_x.save('./geodata/html_maps/' + name)
 
     return map_x
 
@@ -547,17 +554,18 @@ def center_hdr(df):
 
 
 def with_style(df):
-    cap = 'Four geocoders coordinates pairwise difference comparison'
-    align_hdr_left = [dict(selector="th",
-                           props=[('text-align', 'left'),
-                                  ('background-color', '#f7f7f9')])]
-
-    df = df.style.set_table_styles(align_hdr_left)\
+    cap = ('Four geocoders coordinates pairwise difference comparison<br>' +
+           'with highlighted min (green) and max (pink) in each column.')
+    
+    styles = [dict(selector="th", props=[('background-color', '#f7f7f9'),
+                                         ("text-align", "center")]),
+              dict(selector="caption", props=[("caption-side", "bottom")])
+              ]
+    df = df.style.set_table_styles(styles)\
                  .apply(highlight_min)\
                  .apply(highlight_max)\
                  .format("{:.6f}")\
                  .set_caption(cap)
-
     return df
 
 
@@ -576,7 +584,22 @@ def show_data(geocs, geo_dicts, place, show=True):
     return df, dist_df
 
 
-def get_geo_dist_heatmap(places, unit='km', save_fig=True):
+def get_df_dict(geocs, geo_dicts, places):
+    """
+    To retrieve each place's data as a tuple (geodata_df, dist_diff_df) as per output of
+    .show_data(..., show=False), into a single dict.
+    """
+    df_dict = OrderedDict()
+    
+    for p in places:
+        df1, df2 = show_data(geocs, geo_dicts, p, show=False)
+        df_dict[p] = (df1, df2)
+        
+    return df_dict
+
+
+def get_geo_dist_heatmap(places, df_dict, unit='km',
+                         save_fig=True, fig_frmt='svg'):
     """To show the paiwise geodistance comparison in 3 heatmaps for
        Lcation, NE corner, SW corner.
     """
@@ -589,7 +612,8 @@ def get_geo_dist_heatmap(places, unit='km', save_fig=True):
 
     for p in places:
         # Get the pairwise distance dataframe, second output of show_data():
-        dist_frames_d[p] = show_data(geocs, geo_dicts, p, show=False)[1]
+        # dist_frames_d[p] = show_data(geocs, geo_dicts, p, show=False)[1]
+        dist_frames_d[p] = df_dict[p][1]
 
     combined_df = pd.DataFrame()
 
@@ -659,84 +683,203 @@ def get_geo_dist_heatmap(places, unit='km', save_fig=True):
 
     # if not save, show:
     if save_fig:
-        plt.savefig('./images/Heatmap_sns_geodist_difference_' + unit + '.png',
-                    format='png',
-                    orientation='landscape',
-                    bbox_inches='tight')
+        DIR_IMG = os.path.join(Path('.'), 'images')
+        out = os.path.join(DIR_IMG, 'Heatmap_sns_geodist_difference_' + unit + '.' + fig_frmt)
+        plt.savefig(out, format=fig_frmt, orientation='landscape', bbox_inches='tight')
         return
     else:
         plt.show()
 
     # return
 
-def df_to_pic(data, col_width=3., row_height=0.625, font_size=14,
-                     header_color='w', row_colors=['#f1f1f2', 'w'], edge_color='w',
-                     bbox=[0, 0, 1, 1], header_columns=0,
-                     ax=None, tbl_name='', wide_col1=False, **kwargs):
-    """
-    Adapted from S.O. #39358752
-    """
+import matplotlib.pyplot as plt
+import numpy as np
 
-    # header_color='#40466e'
+def df_to_pic(df,
+              ax=None,
+              new_col_names=[],
+              header_columns=0,
+              row_height=0.6,
+              font_size=11,
+              squeeze_factor=6.4,
+              header_color='#ecf7f9', 
+              row_colors=['#f1f1f2', 'w'],
+              save_tbl_name='',
+              show=False,
+              fig_format = 'svg',
+              bbox=[0,0,1,1],
+              **kwargs):
+    """
+    Adapted from SO #39358752.
+    To output a table from a pandas.DataFrame.
+    Parameters:
+    -----------
+    :param df: pandas datarfame
+    :param new_col_names: replaces the columns in case df has MultiIndex; list
+    :param header_columns: Count of column to be bolded
+    :param row_height: Height of each row
+    :param font_size: Table cells font_size
+    :param squeeze_factor: Enable the conversion from len('column names') to figure width in inches, 
+                           or to fine tune the display
+    :params edge_color, header_color='w': Color strings
+    :param row_colors: List of colors for alternating color scheme
+    :param save_tbl_name: If given, the figure is saved with that name
+    :param show: Bool flag to display output; should be True, if ax is an existing subplots axis [not tested]
+    :param fig_format: Image format
+    :params bbox, **kwargs: Argument passed to plt table for futher styling
+    
+    """
     import six          # iteritems
+        
+    col_pad = 0.05
+    min_width = 6.4
+    
+    if squeeze_factor == 0:
+        squeeze_factor = min_width
+
+    # Columns from multiindex will not be parsed correctly
+    if new_col_names:
+        cols = new_col_names
+    else:
+        cols = df.columns.tolist()
+    
+    df_widths = np.array([len(c) + 2*col_pad for c in cols]) / squeeze_factor
+
+    if (df_widths.sum() / min_width) < 0.6:
+        print('resized')
+        df_widths *= 1/.6
+    
+    df_heights = np.array([row_height] * df.shape[0])
 
     if ax is None:
-        W, H = (np.array(data.shape[::-1]) + np.array([0, 1])) * np.array([col_width, row_height]);
-        fig, ax = plt.subplots(figsize=(W, H)); #size);
+        W, H = (df_widths.sum(), df_heights.sum())        
+        fig = plt.figure(figsize=(W, H));
+        
+        ax = plt.subplot();
         ax.axis('off');
-        #ax.spines['right'].set_visible(False)
-        #ax.spines['bottom'].set_visible(False)
         plt.xticks([]);
-        plt.yticks([])
+        plt.yticks([]);
 
-        if wide_col1:
-            # first col has no label:
-            cols = list(cat_count_T.columns)
-            cols[0]='          '
-            mpl_table = ax.table( cellText=data.values,
-                                  colLabels=cols,
-                                  bbox=bbox, **kwargs );
-        else:
-            mpl_table = ax.table( cellText=data.values, colLabels=data.columns, bbox=bbox, **kwargs)
-
-    if wide_col1:
-        def_ratio = W/len(data.columns)
-        added = 0.05
-        offset = added/(len(data.columns)-1)
-        # width of cells. to accommodate long name in descriptive 1st col
-        w_0 = W/(len(data.columns)-1)  # col 1
-        w_n = round((W - w_0)/(len(data.columns)-1), 2)
-    else:
-        w_0 = col_width
-        w_n = col_width
-
+        mpl_table = ax.table(cellText=df.values,
+                             colLabels=cols,
+                             colWidths=df_widths,
+                             loc='center',
+                             bbox=bbox,
+                             **kwargs);
+    
     mpl_table.auto_set_font_size(False);
     mpl_table.set_fontsize(font_size);
+    
+    mpl_table.scale(1, df.shape[0]+1)
 
     for k, cell in six.iteritems(mpl_table._cells):
-        cell.set_edgecolor(edge_color);
-        if wide_col1:
-            if k[1] > 0:
-                cell.set_width(w_n)
-            else:
-                cell.set_width(w_0)
-            #or k[1]
-        if k[0] == 0 or k[1] < header_columns:
-            cell.set_edgecolor(edge_color);
-            cell.set_text_props(weight='bold', color='k');
+        cell.set_edgecolor(None);
+        
+        if k[0] == 0:
+            cell.set_facecolor(header_color);
+            cell.set_text_props(weight='bold', 
+                                color='k');
+            #cell.set_height(row_height/2);
         else:
-            cell.set_edgecolor(None);
-            if k[1] == 0:
-                cell.set_text_props(weight='bold', color='k');
+            cell.set_facecolor(row_colors[k[0]%len(row_colors)-1]);
+            if k[1] <= header_columns:
+                #cell.set_facecolor(header_color);
+                cell.set_text_props(weight='bold', 
+                                    color='k');
 
-            cell.set_facecolor(row_colors[k[0]%len(row_colors)-1 ]);
+    if len(save_tbl_name):
+        save_tbl_name = save_tbl_name + '.' + fig_format
+        plt.savefig(save_tbl_name, format=fig_format,
+                    transparent=True, bbox_inches='tight',
+                    pad_inches=0.05); #, dpi=100);
 
-    if len(tbl_name):
-        plt.savefig(tbl_name+'.png', format='png',
-                    transparent=True, bbox_inches='tight',  pad_inches=0.125)
-        #dpi=300,
+    if not show:
+        plt.close();
+    else:
+        return ax;
 
-    return ax;
+#==========================================================================================
+
+def style_bounds(feature):
+    #print(feature)'
+    return {'fillOpacity': 0.2,
+            'weight': 1,
+            'fillColor':'#eea700',
+            'edgeColor': '#black'}
+
+
+def get_boro_maps(boro_name,
+                  locs_df,
+                  bounds_gdf,
+                  filter_bounds=True,
+                  colors_d={},
+                  zoom=10,
+                  map_style='cartodbpositron',
+                  file_suffix=''):
+    """
+    To obtain a map with location markers, bounding box and bounds from shapefiles.
+    Parameters:
+    -----------
+    :param boro_name: to filter dataframe 'bounds_gdf' [todo: error check].
+    :type: str
+    :param locs_df: Aggregated geocoding results for each place queried.
+    :type: pandas.DataFrame
+    :param bounds_gdf: Holds the shapfile data (bounds).
+    :type: geopandas.DataFrame
+    :param filter_bounds (default: True): Flag to proceed with the filtering of 
+           bounds_df with boro_name. 
+           If False, all the bounds will be rendered on the map, as with e.g. 
+           "New York City", or with another location where borough names do not 
+           appear in the shapefile, e.g. "Boston".               
+    :type: bool
+    :param colors_d: Dict for each geocoder's color for folium elements.
+    :param zoom: Starting zoom level (int).
+    :param map_style (str): Default folium Tile.
+    """
+    if zoom > 15:
+        # By-pass averaging, use best:
+        map_x = get_map(locs_df.loc['Nominatim', ['lat, lon']].tolist(),
+                                 zoom=zoom, map_style=map_style)
+    else: 
+        map_x = get_map(locs_df['lat, lon'].tolist(),
+                                 zoom=zoom, map_style=map_style)
+    
+    if filter_bounds:
+        gdf_boro = bounds_gdf[bounds_gdf.BoroName == boro_name]
+        folium.GeoJson(gdf_boro,
+                       style_function=style_bounds,
+                       name='Boro bounds'
+                      ).add_to(map_x) 
+    else:
+        folium.GeoJson(bounds_gdf,
+                       style_function=style_bounds,
+                       name='Boro bounds'
+                      ).add_to(map_x)
+    
+    if not colors_d:        # empty:
+        colors_d = dict(zip(locs_df.index.tolist(), ['red', 'green', 'blue', 'cyan']))
+    
+    if boro_name == 'Brooklyn':
+        # move the layer selector: hides AzureMaps results
+        # ‘topleft’, ‘topright’, ‘bottomleft’ or ‘bottomright’ default: ‘topright’
+        add_box_and_markers(map_x, locs_df, colors_d, lc_loc="bottomright")
+    else:
+        add_box_and_markers(map_x, locs_df, colors_d)
+
+    # Save map:
+    name = 'map'
+    if not (locs_df.index.name is None):
+        name = locs_df.index.name.replace(' ', '_')
+    if file_suffix:
+        name += '_' + file_suffix + '.html'
+    else:
+        name += '.html'
+        
+    DIR_HTML = os.path.join(Path('.'), 'geodata', 'html_frames')
+    outfile = os.path.join(DIR_HTML, name)
+    map_x.save(outfile)
+    
+    return map_x
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #        The following code will be executed on import:
@@ -749,7 +892,6 @@ AZURE_KEY = settings.AZURE_KEY
 
 if (len(GOOGLE_KEY) & len(AZURE_KEY)):
     print('GOOGLE_KEY & AZURE_KEY successfully assigned from envir. file.\n')
-
 
 # Load the geocoder list in the namespace:
 geocs = ['Nominatim', 'GoogleV3', 'ArcGis', 'AzureMaps']
@@ -772,7 +914,6 @@ geo_Goo = get_geodata(geocs[1], query_lst)
 geo_Arc = get_geodata(geocs[2], query_lst)
 geo_Azu = get_geodata(geocs[3], query_lst)
 
-
 geo_dicts = [geo_Nom, geo_Goo, geo_Arc, geo_Azu]
 print('\nAll geodata variables gathered into list geo_dicts.\n')
 
@@ -781,4 +922,44 @@ msg = 'The var places will be used for retrieving the geodata '
 msg += 'and the distance comparison for a particular place:\n'
 print(msg, places)
 
+places_to_boros = OrderedDict()
+places_to_boros[places[0]] = 'Manhattan'
+places_to_boros[places[1]] = 'Manhattan'
+places_to_boros[places[2]] = 'Bronx'
+places_to_boros[places[3]] = 'Brooklyn'
+places_to_boros[places[4]] = 'Manhattan'
+places_to_boros[places[5]] = 'Queens'
+places_to_boros[places[6]] = 'Staten Island'
+
+df_dict = get_df_dict(geocs, geo_dicts, places)
+msg = '\nThe geolocation data and distance calculations dataframes '
+msg += 'of each places are stored in a dict (df_dict) as a tuple.\n'
+msg += '\nExample call to access the dataframes:\n'
+msg += '    nyc_df = df_dict[places[0]][0]\n'
+msg += '    dist_nyc_df = df_dict[places[0]][1]\n'
+print(msg)
+
+MAP_DEF_STYLE = 'cartodbpositron'
+
+DIR_GEO = os.path.join(Path('.'), 'geodata')
+DIR_IMG = os.path.join(Path('.'), 'images')
+DIR_SHP = os.path.join(Path('.'), 'geodata', 'shapefiles')
+DIR_HTML = os.path.join(Path('.'), 'geodata', 'html_frames')
+
+# NYC borough/counties boundaries with maritime portion:
+# https://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page
+boro_to_county = {'Manhattan': 'New York',
+                  'Staten Island': 'Richmond',
+                  'Brooklyn': 'Kings',
+                  'Bronx': 'Bronx',
+                  'Queens': 'Queens'}
+
+shpfile1 = os.path.join(DIR_SHP, 'nybbwi.shp')
+gdf_nyc_counties = gpd.read_file(shpfile1, driver='shapefile')
+
+# Boston: https://data.boston.gov/dataset/city-of-boston-boundary
+shpfile2 = os.path.join(DIR_SHP, 'Boston.shp')
+gdf_boston = gpd.read_file(shpfile2, driver='shapefile')
+
+print('END of module {} on-import operations.')
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

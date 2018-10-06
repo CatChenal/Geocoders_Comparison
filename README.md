@@ -1,11 +1,14 @@
 # Comparison of Four Geocoders:
 They return different geolocation coordinates for the same place
 
-# Why I seup this comparison:
+# Why I setup this comparison:
 In another application, I was using the New York City boroughs bounding boxes to impute missing borough names for records with geolocation information; 
 After a first pass, some entries were still not imputed despite clearly belonging to a particular borough. 
 I then tested several geocoders to find out if the problem was a resolution issue... 
-In a sense, it is because I discovered that the geolocation coordinates for the same query - could be quite different both for point locations and their bounding boxes.
+This is how I discovered that the geolocation coordinates - for the same query - could be quite different both for point locations and their bounding boxes.
+
+
+Needless to say, I had to trash my brilliant processing shortcut; instead, I used clustering for borough name imputation.
 
 # The main conclusion from this comparison:
 Depending on the geolocating service used AND the location queried, the geolocation coordinates will be WRONG. 
@@ -14,8 +17,9 @@ them can be set as an absolute ground-truth.
 However, my comparison of four geocoders (Nominatim, GoogleV3, ArcGis and AzureMaps), shows some are more consistent that the others, among them Nominatim, the geocoder of OpenStreetMaps and GoogleV3, the geocoder of GooglePlaces API.
 ArcGis usually returns the largest bounding boxes, and AzureMaps has - literally - "far out" results on several locations.
 
+This HTML report includes all the mapping of the locations and boxes: ./GeocodersComparison/GeocodersComparisonReport.html
 
-![Output of GeocodersComparison.show_geo_dist_heatmap(places)](./GeocodersComparison/images/Heatmap_sns_geodist_difference_km.png)
+![Output of GeoComp4.get_geo_dist_heatmap(places, df_dict, unit='mi')](./GeocodersComparison/images/Heatmap_sns_geodist_difference_mi.svg)
 
 # Note: 
 #### It seems that the errors from AzureMaps are due to the wrong parsing of the query string...
@@ -23,10 +27,6 @@ ArcGis usually returns the largest bounding boxes, and AzureMaps has - literally
 Meaning that with this service, portions of the query may have to be assigned to specific parameters. 
 This may explain why the coordinates for the query string "Richmond county, New York, NY, USA", which asks for the geolocation of Staten Island, 
 one of the boroughs of New York City, returns the coordinates for "Richmond Hill", a Queens neighborhood. Thus AzureMaps ignores portions of the string.
-
-
-# View all the maps with nbviewer:
-[GeocoderComparison Viewer](https://nbviewer.jupyter.org/github/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/Geocoder_Comparison.ipynb)
 
 
 ### Location of rendered maps:  ./GeocodersComparison/geodata/html_maps/
@@ -103,12 +103,12 @@ By default, the plot is saved and not shown --the next cell is used to display i
 
 ```GeoComp4.get_geo_dist_heatmap(places)  # , save_fig=False) # To show it w/o saving it, run with save_fig=False.```
 
-![Output of GeocodersComparison.show_geo_dist_heatmap(places)](./GeocodersComparison/images/Heatmap_sns_geodist_difference_km.png)
+![Output of GeocodersComparison.show_geo_dist_heatmap(places, df_dict)](./GeocodersComparison/images/Heatmap_sns_geodist_difference_km.svg)
 
 ##### Distance in miles:
-```GeoComp4.get_geo_dist_heatmap(places, unit='mi')```
+```GeoComp4.get_geo_dist_heatmap(places, df_dict, unit='mi')```
 
-![Same in miles](./GeocodersComparison/images/Heatmap_sns_geodist_difference_mi.png)
+![Same in miles](./GeocodersComparison/images/Heatmap_sns_geodist_difference_mi.svg)
 
 
 # Conclusion:
