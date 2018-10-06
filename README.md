@@ -17,7 +17,9 @@ them can be set as an absolute ground-truth.
 However, my comparison of four geocoders (Nominatim, GoogleV3, ArcGis and AzureMaps), shows some are more consistent that the others, among them Nominatim, the geocoder of OpenStreetMaps and GoogleV3, the geocoder of GooglePlaces API.
 ArcGis usually returns the largest bounding boxes, and AzureMaps has - literally - "far out" results on several locations.
 
-This HTML report includes all the mapping of the locations and boxes: ./GeocodersComparison/GeocodersComparisonReport.html
+
+### This [**HTML report]**( ./GeocodersComparison/GeocodersComparisonReport.html) includes all the mapping of the locations and boxes.
+
 
 ![Output of GeoComp4.get_geo_dist_heatmap(places, df_dict, unit='mi')](./GeocodersComparison/images/Heatmap_sns_geodist_difference_mi.svg)
 
