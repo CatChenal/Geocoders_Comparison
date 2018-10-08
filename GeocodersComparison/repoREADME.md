@@ -10,8 +10,6 @@ This is how I discovered that the geolocation coordinates - for the same query -
 
 Needless to say, I had to trash my brilliant processing shortcut; instead, I used clustering for borough name imputation.
 
-The [**notebook** in ./GeocodersComparison/](./GeocodersComparison/Report_Items.iynb) show how to retrieve the data and functions.
-
 # The main conclusion from this comparison:
 Depending on the geolocating service used AND the location queried, the geolocation coordinates will be WRONG. 
 As I have not checked all available geocoding services - there are to date, 47 of them available via geopy - I cannot rank them, especially since none of 
@@ -20,13 +18,10 @@ However, my comparison of four geocoders (Nominatim, GoogleV3, ArcGis and AzureM
 ArcGis usually returns the largest bounding boxes, and AzureMaps has - literally - "far out" results on several locations.
 
 
-This [**HTML report**](./GeocodersComparison/GeocodersComparisonReport.html) includes all the mapping of the locations and boxes.
+This [**HTML report**]( ./GeocodersComparison/GeocodersComparisonReport.html) includes all the mapping of the locations and boxes.
 
-# test display html report:
-<iframe src=./GeocodersComparison/GeocodersComparisonReport.html width: 100%></iframe>
-    
+
 ![Output of GeoComp4.get_geo_dist_heatmap(places, df_dict, unit='mi')](./GeocodersComparison/images/Heatmap_sns_geodist_difference_mi.svg)
-
 
 # Note: 
 #### It seems that the errors from AzureMaps are due to the wrong parsing of the query string...
