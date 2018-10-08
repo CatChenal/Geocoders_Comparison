@@ -29,9 +29,8 @@ The [**notebook** in ./GeocodersComparison/](./GeocodersComparison/Report_Items.
 Depending on the geolocating service used AND the location queried, the geolocation coordinates will be WRONG. 
 As I have not checked all available geocoding services - there are to date, 47 of them available via geopy - I cannot rank them, especially since none of 
 them can be set as an absolute ground-truth. 
-However, my comparison shows that some are more consistent that the others, among them [**Nominatim**](https://wiki.openstreetmap.org/wiki/Nominatim), the 
-geocoder of [OpenStreetMaps](https://wiki.openstreetmap.org/wiki/Using_OpenStreetMap) and [GoogleV3](https://geopy.readthedocs.io/en/stable/#googlev3), the geocoder of [Google Map & Places API](https://developers.google.com/maps/documentation/geocoding/start).
-[ArcGis](https://geopy.readthedocs.io/en/stable/#ArcGis), the [ERSI ArcGIS API]() usually returns the largest bounding boxes, and AzureMaps has - literally - "far out" results on several locations.
+However, my comparison shows that some are more consistent that the others, among them **Nominatim** and GoogleV3.
+ArcGis usually returns the largest bounding boxes, and AzureMaps has - literally - "far out" results on several locations.
 
 
 ## Following is the complete report:
