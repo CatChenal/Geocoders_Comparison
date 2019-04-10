@@ -21,6 +21,13 @@ Yet, in the intervening time I checked several services for speed and limits and
 
 The [**Procedures notebook**](./notebooks/GeocodersComparison/Procedures.iynb) shows how to retrieve the data and call the functions.
 
+Because I noticed that the results from this April were different from those from last September (2019), I put together an HTML report highlighting the differences.
+
+## Here is the updated report (you may need to download this repo &mdash; until I fix this setup): 
+[Report (html)](./GeocodersComparison/report/Updated_Report.html)
+
+
+
 # The main conclusion from this comparison:
 
 * Who is the best of all four?
@@ -33,7 +40,6 @@ The [**Procedures notebook**](./notebooks/GeocodersComparison/Procedures.iynb) s
 Depending on the geolocating service used AND the location queried, the geolocation coordinates will be WRONG; better not switch service!  
 
 
-
 Out of curiousity, I wonder how AzureMaps would fare against all geocoders...  
 
 Speaking of which:  
@@ -42,6 +48,3 @@ At the time of this report, **April 2019**, there are 21 geocoding services avai
 The number of pairwise comparisons needed is 210.
 This would require **51 more reports like this one**, which uses the python code in GeocoderComparison that compares only four geocoders.
 
-
-## Following is the complete report: 
-[notebook viewer](https://nbviewer.jupyter.org/github/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparisonReport.ipynb)
