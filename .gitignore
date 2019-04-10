@@ -63,6 +63,8 @@ instance/
 
 # Scrapy stuff:
 .scrapy
+_temp*
+_tmp*
 _unused*
 
 # Sphinx documentation

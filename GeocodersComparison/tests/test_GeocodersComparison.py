@@ -4,8 +4,8 @@ import sys
 from .context import GeocodersComparison
 
 
-# also needed test values
-
+# INC: also needed test values
+"""
 geocoder_to_use = 'GoogleV3'
 
 geocs = ['Nominatim', 'GoogleV3', 'ArcGis', 'AzureMaps']
@@ -111,4 +111,5 @@ def compare_check4(geos=geo_dicts2, locale='Staten Island', which='bounds'):
         print('Unexpected Exception error: investigate')
     except:
         print("Unexpected error:", sys.exc_info()[0])
-        raise     
+        raise          
+"""

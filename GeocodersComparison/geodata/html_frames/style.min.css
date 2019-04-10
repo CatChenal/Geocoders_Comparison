@@ -9478,88 +9478,118 @@ span#login_widget {
   float: left;
 }
 span#login_widget > .button,
-#logout {
+#logout,
+#shutdown {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+  margin-left: 10px;
 }
 span#login_widget > .button:focus,
 #logout:focus,
+#shutdown:focus,
 span#login_widget > .button.focus,
-#logout.focus {
+#logout.focus,
+#shutdown.focus {
   color: #333;
   background-color: #e6e6e6;
   border-color: #8c8c8c;
 }
 span#login_widget > .button:hover,
-#logout:hover {
+#logout:hover,
+#shutdown:hover {
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
 span#login_widget > .button:active,
 #logout:active,
+#shutdown:active,
 span#login_widget > .button.active,
 #logout.active,
+#shutdown.active,
 .open > .dropdown-togglespan#login_widget > .button,
-.open > .dropdown-toggle#logout {
+.open > .dropdown-toggle#logout,
+.open > .dropdown-toggle#shutdown {
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
 span#login_widget > .button:active:hover,
 #logout:active:hover,
+#shutdown:active:hover,
 span#login_widget > .button.active:hover,
 #logout.active:hover,
+#shutdown.active:hover,
 .open > .dropdown-togglespan#login_widget > .button:hover,
 .open > .dropdown-toggle#logout:hover,
+.open > .dropdown-toggle#shutdown:hover,
 span#login_widget > .button:active:focus,
 #logout:active:focus,
+#shutdown:active:focus,
 span#login_widget > .button.active:focus,
 #logout.active:focus,
+#shutdown.active:focus,
 .open > .dropdown-togglespan#login_widget > .button:focus,
 .open > .dropdown-toggle#logout:focus,
+.open > .dropdown-toggle#shutdown:focus,
 span#login_widget > .button:active.focus,
 #logout:active.focus,
+#shutdown:active.focus,
 span#login_widget > .button.active.focus,
 #logout.active.focus,
+#shutdown.active.focus,
 .open > .dropdown-togglespan#login_widget > .button.focus,
-.open > .dropdown-toggle#logout.focus {
+.open > .dropdown-toggle#logout.focus,
+.open > .dropdown-toggle#shutdown.focus {
   color: #333;
   background-color: #d4d4d4;
   border-color: #8c8c8c;
 }
 span#login_widget > .button:active,
 #logout:active,
+#shutdown:active,
 span#login_widget > .button.active,
 #logout.active,
+#shutdown.active,
 .open > .dropdown-togglespan#login_widget > .button,
-.open > .dropdown-toggle#logout {
+.open > .dropdown-toggle#logout,
+.open > .dropdown-toggle#shutdown {
   background-image: none;
 }
 span#login_widget > .button.disabled:hover,
 #logout.disabled:hover,
+#shutdown.disabled:hover,
 span#login_widget > .button[disabled]:hover,
 #logout[disabled]:hover,
+#shutdown[disabled]:hover,
 fieldset[disabled] span#login_widget > .button:hover,
 fieldset[disabled] #logout:hover,
+fieldset[disabled] #shutdown:hover,
 span#login_widget > .button.disabled:focus,
 #logout.disabled:focus,
+#shutdown.disabled:focus,
 span#login_widget > .button[disabled]:focus,
 #logout[disabled]:focus,
+#shutdown[disabled]:focus,
 fieldset[disabled] span#login_widget > .button:focus,
 fieldset[disabled] #logout:focus,
+fieldset[disabled] #shutdown:focus,
 span#login_widget > .button.disabled.focus,
 #logout.disabled.focus,
+#shutdown.disabled.focus,
 span#login_widget > .button[disabled].focus,
 #logout[disabled].focus,
+#shutdown[disabled].focus,
 fieldset[disabled] span#login_widget > .button.focus,
-fieldset[disabled] #logout.focus {
+fieldset[disabled] #logout.focus,
+fieldset[disabled] #shutdown.focus {
   background-color: #fff;
   border-color: #ccc;
 }
 span#login_widget > .button .badge,
-#logout .badge {
+#logout .badge,
+#shutdown .badge {
   color: #fff;
   background-color: #333;
 }
@@ -9793,6 +9823,10 @@ ul.breadcrumb span {
   margin-right: 7px;
   margin-left: 7px;
 }
+.file_size {
+  width: 65px;
+  text-align: right;
+}
 [dir="rtl"] .item_modified.pull-right {
   float: left !important;
   float: left;
@@ -9816,7 +9850,7 @@ ul.breadcrumb span {
 }
 .item_buttons .running-indicator {
   padding-top: 4px;
-  color: #5cb85c;
+  color: #357935;
 }
 .item_buttons .kernel-name {
   padding-top: 4px;
@@ -10627,6 +10661,27 @@ div.input_prompt {
   color: #303F9F;
   border-top: 1px solid transparent;
 }
+.run_this_cell {
+  visibility: hidden;
+  cursor: pointer;
+  color: #333;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 1ex;
+  padding-right: 1ex;
+  width: 1ex;
+}
+div.code_cell div.input_prompt {
+  min-width: 11ex;
+}
+div.code_cell:hover div.input .run_this_cell {
+  visibility: visible;
+}
+@media (-moz-touch-enabled: 1), (any-pointer: coarse) {
+  .run_this_cell {
+    visibility: visible;
+  }
+}
 div.input_area > div.highlight {
   margin: 0.4em;
   border: none;
@@ -10910,6 +10965,7 @@ div.out_prompt_overlay:hover {
 }
 div.output_prompt {
   color: #D84315;
+  min-width: 11ex;
 }
 /* This class is the outer container of all output sections. */
 div.output_area {
@@ -12916,9 +12972,6 @@ ul.typeahead-list  > li > a.pull-right {
   border-radius: 2px;
   -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.4);
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.4);
-}
-.terminal-app .terminal,
-.terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
 }
@@ -12929,7 +12982,11 @@ ul.typeahead-list  > li > a.pull-right {
   color: black;
   background: white;
 }
+.terminal-app .terminado-container-container {
+  padding-top: 20px;
+  height: 100%;
+}
 .terminal-app #terminado-container {
-  margin-top: 20px;
+  height: 100%;
 }
 /*# sourceMappingURL=style.min.css.map */

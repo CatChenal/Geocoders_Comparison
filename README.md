@@ -11,26 +11,36 @@ a wrapping library such as [geopy](https://geopy.readthedocs.io/en/stable/).
 *  [ArcGis](https://geopy.readthedocs.io/en/stable/#ArcGis): [ERSI ArcGIS API](https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm)
 *  [AzureMaps](https://geopy.readthedocs.io/en/stable/#azuremaps): [Microsoft Azure Maps API](https://docs.microsoft.com/en-us/azure/azure-maps/index)
 
-(Due to an unresolved glitch, I use the ```requests``` library to access AzureMaps.)
-
 ## Why I setup this comparison:
 In another application, I was using the New York City boroughs bounding boxes to impute missing borough names for records with geolocation information. 
-The most expert GIS users among you would certainly predict scattershot results from such a "corner-cutting" approach, but initially I thought mine was a brilliant way to prevent over 85,000 requests... 
+The most expert GIS users among you would certainly predict scattershot results from such a "corner-cutting" approach, but initially I thought mine was a brilliant way to prevent over 85,000 requests...
+After I found out about the official territorial boundaries (shapefiles), I trashed the box solution!  
 
-After a first pass, some entries were still not imputed despite clearly belonging to a particular borough. So something was wrong!
-The first reason is that bounding boxes are supposed to cover a geographical area, so a lot of information is lost, hence my idea turned out quite dopey...
-The other reason &mdash; granted one would really need to work with bounding boxes &mdash; is that, depending on the geolocating service, the geolocation coordinates - for the same query - could be quite different both for point locations and their bounding boxes.
+Yet, in the intervening time I checked several services for speed and limits and I found out response differences between some geocoders...for the same query, so I investigated!
 
-Needless to say, I had to trash my <del>brilliant</del> **novice** processing shortcut; instead, I used clustering for borough name imputation.
 
-The [**notebook** in ./GeocodersComparison/](./GeocodersComparison/Report_Items.iynb) shows how to retrieve the data and functions.
+The [**Procedures notebook**](./notebooks/GeocodersComparison/Procedures.iynb) shows how to retrieve the data and call the functions.
 
 # The main conclusion from this comparison:
-Depending on the geolocating service used AND the location queried, the geolocation coordinates will be WRONG. 
-As I have not checked all available geocoding services - there are to date, 47 of them available via geopy - I cannot rank them, especially since none of 
-them can be set as an absolute ground-truth. 
-However, my comparison shows that some are more consistent that the others, namely **Nominatim** and **GoogleV3**.
-ArcGis usually returns the largest bounding boxes, and AzureMaps has - literally - "far out" results on several locations.
+
+* Who is the best of all four?
+ 1. **Nominatim**: Star of the glorious open-source community (see the data on Cleopatra's Needle in Central Park);
+ 2. **GoogleV3**: not OS, but similar results to Nominatim
+ 3. ArcGis: the least wrong of the worse two
+ 4. AzureMaps: Oh come on! &#128534;
+
+* No hedging!
+Depending on the geolocating service used AND the location queried, the geolocation coordinates will be WRONG; better not switch service!  
+
+
+
+Out of curiousity, I wonder how AzureMaps would fare against all geocoders...  
+
+Speaking of which:  
+At the time of this report, **April 2019**, there are 21 geocoding services available in geopy (excluding What3Words):  
+
+The number of pairwise comparisons needed is 210.
+This would require **51 more reports like this one**, which uses the python code in GeocoderComparison that compares only four geocoders.
 
 
 ## Following is the complete report: 
