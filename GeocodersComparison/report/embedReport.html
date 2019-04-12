@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Geocoders Comparison Report: Comparison with older data</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="custom.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<header>
+  <h2>Comparison of four geocoders:<br>
+      September 2018 vs. April 2019 results</h2>
+  <h5>(Not mobile friendly)</h5>
+</header>
+
+<section>  
+    <div width=100%> 
+        <article>
+            <h3>Quantitative sumary: pairwise differences as distances</h3>
+            
+            <p>Overall, the results from AzureMaps differ the most from the others, especially for 'Kings county' (Brooklyn) and 'Richmond 
+                county' (Staten Island).
+            </p>
+            <p>Note: I gave a generous 5 km (~3.1 miles) allowance for heatmaping the distance differences;
+                   this means that the color scale applies to distances that are greater than that.
+            </p>
+            <div class="row">
+                <div class="column">
+                    <h4>Old data:</h4>
+                    <img src="../images/sep2018_Heatmap_sns_geodist_difference_mi.svg" 
+                         style="width:940px; height:420px"
+                         title="Pairwise differences in miles" 
+                         alt="old Pairwise differences in miles">
+               </div>
+               <div class="column">
+                    <h4>New data: &nbsp; &#9989; Azure is worse still</h4>
+                    <img src="../images/Heatmap_sns_geodist_difference_mi.svg" 
+                         style="width:940px; height:420px"
+                         title="Pairwise differences in miles" 
+                         alt="Pairwise differences in miles">
+               </div>
+            </div>
+            <h3>Location coordinates = center of the bounding box?</h3>
+            <div class="row">
+                <div class="column">
+                    <h4>Old data:</h4>
+                    <img src="../images/sep2018_comp_Loc_center_tbl.svg" alt="old Table 1" />
+                </div>
+                <div class="column">
+                   <h4>New data: &nbsp; &#9989; Azure lost its consistency</h4>
+                    <img src="../images/comp_Loc_center_tbl.svg" alt="Table 1" />
+                </div>
+            </div>
+        
+        </article>
+    </div>
+    <div width=100%> 
+        <h2>Maps!</h2>
+            <ul>
+                <li>In my revised implementation, I figured out how to draw the box from the shapefiles. 
+                    The map elements from the shapefile are color-coded black in the legends ("Boro bounds" 
+                    only in the old maps, "shapefile bounds" and "shapefile box" in the new ones). The color 
+                    of elements for each geocoder is also slightly changed (desaturated).</li>
+                <li>Finally, the report embedded in the next cell contains functional 
+                    <a href="https://python-visualization.github.io/folium/#">Folium</a> maps:&nbsp;&nbsp;
+                    The zoom indication in the sub-headers helps visualize out-of-bounds results; 
+                    The map elements, which overlap if identical, can be toggled on/off in the legend.
+                </li>
+            </ul>
+    </div>
+    
+    <div class="row">
+        <div class="col_hdr" >
+            <h4>A. New York City:  (zoom OUT 1x)</h4>
+        </div>
+        <div class="col_hdr" >
+            <h4>(zoom OUT 1x)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <h4>Old data:</h4>
+           <iframe class="pic" src="../geodata/html_frames/sep2018_New_York_City.html" ></iframe>
+        </div>
+        <div class="column">
+           <h4>New data:</h4>
+           <iframe class="pic" src="../geodata/html_frames/New_York_City.html" ></iframe>
+        </div>
+     </div>
+     
+    <div class="row">
+        <div class="col_hdr">
+            <h4>B. New York county: (zoom OUT 1x)</h4>
+        </div>
+        <div class="col_hdr" >
+            <h4>(zoom OUT 1x)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <h4>Old data:</h4>
+            <iframe class="pic" src="../geodata/html_frames/sep2018_New_York_county.html" ></iframe>
+        </div>
+        <div class="column">
+            <h4>New data:</h4>
+            <iframe class="pic" src="../geodata/html_frames/New_York_county.html" ></iframe>
+        </div>
+     </div>
+     
+    <!--- Cleo !--->  
+    <div class="row">
+       <div class="col_hdr" >
+            <h4>C. Cleopatra's Needle in Central Park:</h4>
+        </div>
+        <div class="col_hdr" >
+            <h4>...</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <h4>Old data:</h4>
+            <iframe class="pic" src="../geodata/html_frames/sep2018_Cleopatra's_needle.html" ></iframe>
+        </div>
+        <div class="column">
+            <h4>New data: &nbsp; &#9989; Azure picked out a restaurant on the West side & gave it a humongous footprint!</h4>
+            <iframe class="pic" src="../geodata/html_frames/Cleopatra's_needle.html" ></iframe>
+        </div>
+    </div>
+        
+    <div class="row">
+       <div class="col_hdr">
+            <h4>E. Bronx</h4>
+        </div>
+        <div class="col_hdr" >
+            <h4>...</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <h4>Old data:</h4>
+            <iframe class="pic" src="../geodata/html_frames/sep2018_Bronx_county.html" ></iframe>
+         </div>               
+       <div class="column">
+            <h4>New data: &nbsp; &#9989; Azure improved its box!</h4>
+            <iframe class="pic" src="../geodata/html_frames/Bronx_county.html" ></iframe>
+         </div>               
+    </div>
+    
+    <div class="row">
+        <div class="col_hdr" >
+            <h4>F. Brooklyn:</h4>
+        </div>
+        <div class="col_hdr" >
+            <h4>(zoom OUT 4x)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <h4>Old data:</h4>
+            <iframe class="pic" src="../geodata/html_frames/sep2018_Kings_county.html" ></iframe>
+         </div>               
+        <div class="column">
+            <h4>New data: &nbsp; &#9989; Azure got worse!</h4>
+            <iframe class="pic" src="../geodata/html_frames/Kings_county.html" ></iframe>
+        </div>
+    </div>
+      
+        
+    <div class="row">
+       <div class="col_hdr" >
+            <h4>G. Queens: (zoom OUT 1x)</h4>
+        </div>
+        <div class="col_hdr" >
+            <h4>(zoom OUT 1x)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <h4>Old data:</h4>
+            <iframe class="pic" src="../geodata/html_frames/sep2018_Queens_county.html" ></iframe>
+        </div>
+        <div class="column">
+            <h4>New data: &nbsp; &#9989; Azure got worse!</h4>
+            <iframe class="pic" src="../geodata/html_frames/Queens_county.html" ></iframe>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col_hdr" >
+            <h4>H. Staten Island:</h4>
+        </div>
+        <div class="col_hdr" >
+            <h4>(zoom OUT 4x)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <h4>Old data:</h4>
+            <iframe class="pic" src="../geodata/html_frames/sep2018_Richmond_county.html" ></iframe>
+        </div>
+        <div class="column">
+            <h4>New data: &nbsp; &#9989; Azure got worse!</h4>
+            <iframe class="pic" src="../geodata/html_frames/Richmond_county.html" ></iframe>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col_hdr" >
+            <h4>I. Boston:</h4>
+        </div>
+        <div class="col_hdr" >
+            <h4>...</h4>
+        </div>
+        <div class="column">
+            <h4>Old data:</h4>
+            <iframe class="pic" src="../geodata/html_frames/sep2018_Boston.html" ></iframe>
+        </div>
+        <div class="column">
+            <h4>New data: &nbsp; &#9989; Azure improved its box!</h4>
+           <iframe class="pic" src="../geodata/html_frames/Boston.html" ></iframe>
+        </div>
+    </div>
+
+</section> 
+</body>
+<footer align="center">
+    <div align="center">
+    <p style="font-size:125%;"> <strong>Cat Chenal</strong></p>
+    <p>
+        <a href="https://github.com/CatChenal">
+        <i class="fa fa-github"  style="font-size:60px;color:white;"></i></a>  
+         &nbsp;&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/catchenal/">
+        <i class="fa fa-linkedin-square" style="font-size:60px;color:white"></i></a>
+    </p>
+    </div>
+</footer>
+</html>

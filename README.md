@@ -16,16 +16,20 @@ In another application, I was using the New York City boroughs bounding boxes to
 The most expert GIS users among you would certainly predict scattershot results from such a "corner-cutting" approach, but initially I thought mine was a brilliant way to prevent over 85,000 requests...
 After I found out about the official territorial boundaries (shapefiles), I trashed the box solution!  
 
-Yet, in the intervening time I checked several services for speed and limits and I found out response differences between some geocoders...for the same query, so I investigated!
+Yet, in the intervening time I had checked several services for speed and limits and I found out response differences between some geocoders...for the same query, so I investigated!
+
+The [**Procedures notebook**](./notebooks/GeocodersComparison/Procedures.ipynb) shows how to retrieve the data and call the functions.
 
 
-The [**Procedures notebook**](./notebooks/GeocodersComparison/Procedures.iynb) shows how to retrieve the data and call the functions.
+## Shapefile sources:
+* [New York City](https://data.cityofnewyork.us/City-Government/Borough-Boundaries-Water-Areas-Included-/tv64-9x69)
+* [Boston](https://data.boston.gov/dataset/city-of-boston-boundary2)  
+
 
 Because I noticed that the results from this April were different from those from last September (2019), I put together an HTML report highlighting the differences.
-
-## Here is the updated report (you may need to download this repo &mdash; until I fix this setup): 
-[Report (html)](./GeocodersComparison/report/Updated_Report.html)
-
+## Here is the updated report:  
+[Report (ipnyb)](./GeocodersComparison/report/Report.ipnyb)
+[Report (html)](./GeocodersComparison/report/Report.html)
 
 
 # The main conclusion from this comparison:
