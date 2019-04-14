@@ -11833,7 +11833,7 @@ At the time of this report, <strong>April 2019</strong>, there are 21 geocoding 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">HTML</span>
@@ -11850,7 +11850,7 @@ At the time of this report, <strong>April 2019</strong>, there are 21 geocoding 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[1]:</div>
 
 
 
@@ -11880,10 +11880,8 @@ At the time of this report, <strong>April 2019</strong>, there are 21 geocoding 
         <article>
             <h3>Quantitative sumary: pairwise differences as distances</h3>
             
-            <p>Overall, the results differ more in the bounding boxes (redder cells) than in the location coordinates. 
-                Also, when one geocoder has a "far out" results, as is the case for AzureMaps for 'Kings county' (Brooklyn) and 'Richmond 
-                county' (Staten Island), the same goes with the box corners distance difference. Moreover, the greater difference in the 
-                bounding boxes is often on the Eastern edge, as seen in the maps of Staten Island (panel H) or Boston (panel I) below.
+            <p>Overall, the results from AzureMaps differ the most from the others, especially for 'Kings county' (Brooklyn) and 'Richmond 
+                county' (Staten Island).
             </p>
             <p>Note: I gave a generous 5 km (~3.1 miles) allowance for heatmaping the distance differences;
                    this means that the color scale applies to distances that are greater than that.
@@ -11891,15 +11889,15 @@ At the time of this report, <strong>April 2019</strong>, there are 21 geocoding 
             <div class="row">
                 <div class="column">
                     <h4>Old data:</h4>
+                    <!-- style="width:940px; height:420px" -->
                     <img src="../images/sep2018_Heatmap_sns_geodist_difference_mi.svg" 
-                         style="width:940px; height:420px"
+                         
                          title="Pairwise differences in miles" 
                          alt="old Pairwise differences in miles">
                </div>
                <div class="column">
                     <h4>New data: &nbsp; &#9989; Azure is worse still</h4>
                     <img src="../images/Heatmap_sns_geodist_difference_mi.svg" 
-                         style="width:940px; height:420px"
                          title="Pairwise differences in miles" 
                          alt="Pairwise differences in miles">
                </div>
@@ -12012,7 +12010,7 @@ At the time of this report, <strong>April 2019</strong>, there are 21 geocoding 
     
     <div class="row">
         <div class="col_hdr" >
-            <h4>F. Brooklyn:</h4>
+            <h4>F. Brooklyn: (zoom OUT 1x)</h4>
         </div>
         <div class="col_hdr" >
             <h4>(zoom OUT 4x)</h4>
@@ -12051,7 +12049,7 @@ At the time of this report, <strong>April 2019</strong>, there are 21 geocoding 
     
     <div class="row">
         <div class="col_hdr" >
-            <h4>H. Staten Island:</h4>
+            <h4>H. Staten Island: (zoom OUT 1x)</h4>
         </div>
         <div class="col_hdr" >
             <h4>(zoom OUT 4x)</h4>
