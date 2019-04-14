@@ -27,9 +27,8 @@ The [**Procedures notebook**](./notebooks/GeocodersComparison/Procedures.ipynb) 
 
 
 Because I noticed that the results from this April were different from those from last September (2019), I put together an HTML report highlighting the differences.
-## Here is the updated report:  
-[Report (html)](http://htmlpreview.github.io/?http://github.com/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/report/Report.html)
 
+## Here is the updated report:  
 [Report (nbviewer)](https://nbviewer.jupyter.org/github/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/report/Report.ipynb)
 
 
