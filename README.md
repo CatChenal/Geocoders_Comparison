@@ -33,7 +33,6 @@ Because I noticed that the results from this April were different from those fro
 
 This other report is implemented with a CSS slider (only works locally):  
 [Slider Report](https://github.com/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/report/sliderReport.html)
-[Slider report (nbviewer)](https://nbviewer.jupyter.org/github/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/report/sliderReport.ipynb)
 
 # The main conclusion from this comparison:
 
