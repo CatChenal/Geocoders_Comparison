@@ -1,9 +1,12 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Style the header */
 header {
     background-color: #006699;
     padding: 2px;
@@ -11,61 +14,51 @@ header {
     font-size: 20px;
     color: white;
 }
-footer {
-    padding: 10px;
-    text-align: center;
-    background-color: #006699;
-    /*color: white;*/
-}
-.site-footer {
-    height: 100px;
-    padding: 2px;
-    text-align: center;
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 5%;
+    background: #ccc;
+    padding: 20px;
 }
 
-/* From W3C:*/
-figure {
-    float: left;
-    width: 100%;
-    text-align: left;
-    font-size: medium;
-    text-indent: 1px;
-    border: thin silver solid;
-    margin: 0em;
-    padding: 0em;
-  }
-figcaption {
-    width: 100%;
-    font-weight: bold;
-    font-size: 1.15em;
-    padding: 0.2em;
-    color: black;
-    background-color: lightblue;
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
 }
+
 article {
     float: left;
     margin-left: 5px;
     padding: 20px;
-    width: 100%;
+    width: 100%
     background-color: #f1f1f1;
 }
-h1 {
-    font-size: 2em;
-  }
-/*
+
+/* centered paragraph: */
 p.center {
     text-align: center;
     color: red;
-}*/
+}
+
 /* all HTML elements with class="center" will be center-aligned: */
 /* has no effect if the width property is not set (or set to 100%). */
-/*.center {
+.center {
     margin: auto;
     text-align: center;
     width: 50%;
     border: 3px solid green;
     padding: 10px;
-}*/
+}
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
 /* Create two equal columns headers */
 .col_hdr {
@@ -75,34 +68,17 @@ p.center {
     background-color: #c2f0f0;
     text-align: center;
 }
-.h5_2cols {
-    float: left;
-    width: 100%;
-    text-align: left;
-    padding: 5px;
-    background-color: lightblue;
-}
-.row_li {
-    /*ad-hoc for expanding maps frames to into slider*/
-    height: 1200px;  
-}
 /* Create two equal columns that floats next to each other */
 .column {
     float: left;
     width: 50%;
-    padding: 2px;
-}
-/* Clear floats after the columns */
-section:after {
-    content: "";
-    display: table;
-    clear: both;
+    padding: 5px;
 }
 /* hdr spanning a row */    
 .col1_hdr {
     float: left;
     width: 100%;
-    padding: 4px;
+    padding: 5px;
     background-color: #c2f0f0;
     text-align: center;
 }
@@ -117,32 +93,37 @@ section:after {
     width: 65%;
     padding: 5px;
 }
-.row {
-    float: left;
-    /*height: 100%;*/
-    width: 100%;
-    padding: 1px;
-}    
+    
 /* Clear floats after the columns */
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
+
 iframe.pic {
-    margin: auto;
-    border: none;
-    /* settings for Folium html maps: */
-    width: 860px;
-    height: 770px;
+margin: auto;
+border: none;
+height: 410px; 
+width: 100%;
 } 
+
 /* style for an element with id="hide_txt" */
 #hide_txt {
     color: #c2f0f0;
 }
+
+/* Style the footer */
+footer {
+    background-color: #006699;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
-    article {
+    nav, article {
         width: 100%;
         height: auto;
     }
