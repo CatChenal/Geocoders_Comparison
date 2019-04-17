@@ -12,9 +12,8 @@ a wrapping library such as [geopy](https://geopy.readthedocs.io/en/stable/).
 *  [AzureMaps](https://geopy.readthedocs.io/en/stable/#azuremaps): [Microsoft Azure Maps API](https://docs.microsoft.com/en-us/azure/azure-maps/index)
 
 ## Why I setup this comparison:
-In another application, I was using the New York City boroughs bounding boxes to impute missing borough names for records with geolocation information. 
-The most expert GIS users among you would certainly predict scattershot results from such a "corner-cutting" approach, but initially I thought mine was a brilliant way to prevent over 85,000 requests...
-After I found out about the official territorial boundaries (shapefiles), I trashed the box solution!  
+In another application, I was using the New York City boroughs bounding boxes to impute missing borough names for records with geolocation information (via set operations). 
+The most expert GIS users among you would certainly predict scattershot results from such a "corner-cutting" approach, but initially I thought mine was a great way to prevent over 85,000 requests... Until I found out about the official territorial boundaries (shapefiles): then I trashed the box solution!  
 
 Yet, in the intervening time I had checked several services for speed and limits and I found out response differences between some geocoders...for the same query, so I investigated!
 
@@ -26,13 +25,14 @@ The [**Procedures notebook**](./notebooks/GeocodersComparison/Procedures.ipynb) 
 * [Boston](https://data.boston.gov/dataset/city-of-boston-boundary2)  
 
 
-Because I noticed that the results from this April were different from those from last September (2019), I put together an HTML report highlighting the differences.
+Because I noticed that the results from this April were different from those from last September (2018), I put together an HTML report highlighting the differences.
 
 ## Here is the updated report:  
-[Report (nbviewer)](https://nbviewer.jupyter.org/github/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/report/Report.ipynb)
+I've implemented the "sliderReport.html" by modifying a ["JS-less CSS slider"](https://github.com/drygiel/csslider) designed by GH user drygiel"  
+Thank you, drygiel!
 
-This other report is implemented with a CSS slider (only works locally):  
-[Slider Report](https://github.com/CatChenal/Geocoders_Comparison/blob/master/GeocodersComparison/report/sliderReport.html)
+<a href="https://catchenal.github.io/assets/sliderReport.html" target="_blank">Slider Report</a>
+
 
 # The main conclusion from this comparison:
 
@@ -43,7 +43,10 @@ This other report is implemented with a CSS slider (only works locally):
  4. AzureMaps: Oh come on! &#128534;
 
 * No hedging!
-Depending on the geolocating service used AND the location queried, the geolocation coordinates will be WRONG; better not switch service!  
+I presume that it is very unlikely that an application would use different geolocating services, but in the case some 'hedging' is involved (e.g. on limits, time-outs), the geolocation for the same query will be different.
+
+* Mind the box!
+Additionally, my non-exhaustive comparison of four Geopy geocoders (out of 21), reveals that the boxing of a location is not always principled. For instance, Nominatim and GoogleV3 most often use the shapefile with water extent for boxing, whereas ArcGis and AzureMaps do not; moreover, ArcGis boxes typically extend further North than warranted by the existing shapefiles by at most 10 miles.    
 
 
 Out of curiousity, I wonder how AzureMaps would fare against all geocoders...  

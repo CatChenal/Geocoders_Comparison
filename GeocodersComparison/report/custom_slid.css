@@ -1,10 +1,7 @@
+/* slider specific */
+
 /* slider inline style */
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,700|Lato);
-
-* {
-    margin: 0;
-    padding: 0;
-}
 ::-webkit-scrollbar {
     width: 2px;
     background: rgba(255, 255, 255, 0.1);
@@ -16,99 +13,40 @@
     background: rgba(0, 94, 168, 0.6);
 }
 
-ul, ol {
-    padding-left: 10px;
+* {
+    margin: 0;
+    padding: 0;
+    /*needed to get 1 row w/2 cols: */
+    box-sizing: border-box;
 }
-
-html, body, footer {
-    height: 100%;
+html{
+    background-color: #FFF;
+}
+body {
+    height: 90%;
     text-align: center;
     font: 400 100% 'Raleway', 'Lato';
     color: #333;
-    background-color: #FFF;
-    background-image: -webkit-radial-gradient(50% 10%, ellipse farthest-corner, #ffffff 35%, #cccccc);
-    background-image: -moz-radial-gradient(50% 10%, ellipse farthest-corner, #ffffff 35%, #cccccc);
-    background-image: -ms-radial-gradient(50% 10%, ellipse farthest-corner, #ffffff 35%, #cccccc);
-    background-image: -o-radial-gradient(50% 10%, ellipse farthest-corner, #ffffff 35%, #cccccc);
-    background-image: radial-gradient(farthest-corner ellipse at 50% 10%, #ffffff 35%, #cccccc);
 }
-
+ul, ol {
+    padding-left: 10px;
+}
+/*
 .csslider .navigation label {
     background: #B1B1B1;
-}
-.csslider .arrows label {
-    border-left-color: #B1B1B1;
-    border-right-color: #B1B1B1;
 }
 .csslider.inside .navigation label {
     border: 1px solid #FFF;
 }
-
+*/
+/* aliasing of class csslider: in original implementation
+enabled id of slide with extra text animation (removed here).
+See: https://github.com/drygiel/csslider */
 #slider1 {
     margin: 5px;
     font-family: 'Lato';
     height: 100%;
 }
-#slider1 > input:nth-of-type(3):checked ~ ul #bg {
-    width: 80%;
-    padding: 22px;
-    -moz-transition: .5s .5s;
-    -o-transition: .5s .5s;
-    -webkit-transition: .5s .5s;
-    transition: .5s .5s;
-}
-#slider1 > input:nth-of-type(3):checked ~ ul #bg div {
-    -moz-transform: translate(0);
-    -ms-transform: translate(0);
-    -o-transform: translate(0);
-    -webkit-transform: translate(0);
-    transform: translate(0);
-    -moz-transition: .5s .9s;
-    -o-transition: .5s .9s;
-    -webkit-transition: .5s .9s;
-    transition: .5s .9s;
-}
-#bg {
-    color: #000;
-    padding: 22px 0;
-    position: absolute;
-    left: 0;
-    top: 16%;
-    height: 20%;
-    width: 0;
-    z-index: 10;
-    overflow: hidden;
-}
-    #bg:before {
-        content: '';
-        position: absolute;
-        left: -1px;
-        top: 1px;
-        height: 100%;
-        width: 100%;
-        z-index: -1;
-        /*background:rgba(0, 0, 0, 0.35); url(./themes/fruit.jpg) 1px 23%;*/
-        -webkit-filter: blur(7px);
-    }
-    #bg:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 20;
-        background: rgba(0, 0, 0, 0.35);
-        pointer-events: none;
-    }
-    #bg div {
-        -moz-transform: translate(120%);
-        -ms-transform: translate(120%);
-        -o-transform: translate(120%);
-        -webkit-transform: translate(120%);
-        transform: translate(120%);
-    }
-
 .scrollable li {
   background-color: white;
 }
@@ -128,6 +66,7 @@ html, body, footer {
     font-size: 120%;
     background-color: white;
 }
+/* to get extra blank lines*/
 #last-p {
   padding-bottom: 200px;
   text-align: justify;
@@ -143,6 +82,7 @@ html, body, footer {
   text-align: left;
   position: relative;
   margin-bottom: 1px;
+  background-color: #FFF;
 }
 .csslider > input {
   display: none;
@@ -187,12 +127,12 @@ html, body, footer {
   position: relative;
   /* change to enclosed entire pic: */
   width: 1720px;
-  height: 630px;
-  
+  /* height as in iframe.pic */
+  height: 680px;
   z-index: 1;
   font-size: 0;
   line-height: 0;
-  background-color: #d1d1d1;
+  background-color: #FFF;
   border: 1px solid #d1d1d1; 
   margin: 0 auto;
   padding: 0;
@@ -202,11 +142,10 @@ html, body, footer {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 .csslider > ul > li {
   position: relative;
   /*cannot change display prop: 
-    slider non-functional*/
+    slider -> non-functional*/
   display: inline-block;
   width: 100%;
   height: 100%;
@@ -231,55 +170,9 @@ html, body, footer {
 .csslider > ul > li.scrollable {
   overflow-y: scroll;
 }
-.csslider > .navigation {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  z-index: 10;
-  margin-bottom: -10px;
-  font-size: 0;
-  line-height: 0;
-  text-align: center;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.csslider > .navigation > div {
-  margin-left: -100%;
-}
-.csslider > .navigation label {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 50%;
-  margin: 0 2px;
-  padding: 5px;
-  background: #d1d1d1;
-}
-.csslider.inside .navigation {
-  bottom: 10px;
-  margin-bottom: 10px;
-}
-.csslider.inside .navigation label {
-  border: 1px solid #7e7e7e;
-}
-.csslider > .navigation label:hover:after {
-  opacity: 1;
-}
-.csslider > .navigation label:after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -3px;
-  margin-top: -3px;
-  background: #0097ef;
-  border-radius: 50%;
-  padding: 3px;
-  opacity: 0;
+.csslider .arrows label {
+    border-left-color: #B1B1B1;
+    border-right-color: #B1B1B1;
 }
 .csslider > .arrows {
   -webkit-touch-callout: none;
@@ -381,3 +274,62 @@ html, body, footer {
   transform: rotate(225deg);
 }
 /* ### end import from csslider */
+
+header {
+    background-color: #006699;
+    padding: 2px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+footer {
+    position:relative;
+    left: 100px;
+    top: 40px;
+    align-self: center;
+    /*like slider.ul width */
+    width: 1720px;
+    padding: 5px;
+    background-color: #006699;
+}
+/* From W3C:*/
+figure {
+    float: left;
+    width: 100%;
+    text-align: left;
+    font-size: medium;
+    text-indent: 1px;
+    border: thin silver solid;
+    margin: 0em;
+    padding: 0em;
+  }
+figcaption {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.15em;
+    padding: 0.2em;
+    color: black;
+    background-color: lightblue;
+}
+h1 {
+    font-size: 3em;
+}
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 2px;
+}
+.row {
+    float: left;
+    width: 100%;
+    padding: 1px;
+}
+iframe.pic {
+    margin: auto;
+    border: none;
+    padding: 2px;
+    /* settings for Folium html maps: */
+    width: 850px;
+    height: 680px;
+}

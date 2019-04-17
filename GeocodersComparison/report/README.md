@@ -4,6 +4,10 @@ I've implemented the "sliderReport.html" by modifying a ["JS-less CSS slider"](h
 
 Thank you, drygiel!
 
-There is this glitch, tough:  
+## New Report:
 
-I've tried linking to images and frames using relative and absolute address, but the result is the same, the images or frames are not rendered.  
+* `sliderReport.html` is the html report above mentioned; uses `custom_slid.css`. 
+
+It is functional only on <a href="https://catchenal.github.io/assets/sliderReport.html" target="_blank">my GH page</a>.  
+
+ I've tried launching it via [htmlpreview](http://htmlpreview.github.io/) but the images or frames are not rendered whether the linking to images and frames is done using relative or absolute address.
