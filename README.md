@@ -17,7 +17,7 @@ The most expert GIS users among you would certainly predict scattershot results 
 
 Yet, in the intervening time I had checked several services for speed and limits and I found out response differences between some geocoders...for the same query, so I investigated!
 
-The [**Procedures notebook**](./notebooks/GeocodersComparison/Procedures.ipynb) shows how to retrieve the data and call the functions.
+The [**Procedures notebook**](https://github.com/CatChenal/Geocoders_Comparison/tree/master/notebooks) shows how to retrieve the data and call the functions.
 
 
 ## Shapefile sources:
